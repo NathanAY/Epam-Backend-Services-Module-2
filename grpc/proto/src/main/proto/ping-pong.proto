@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "HLW";
+
+package helloworld;
+
+// The request message containing the message.
+message PingRequest {
+  string name = 1;
+  int64 timestamp = 2;
+}
+
+// The response message containing the greetings
+message PongResponse {
+  string message = 1;
+  int64 timestamp = 2;
+  int64 responseTimestamp = 3;
+}
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (PingRequest) returns (PongResponse) {}
+}
