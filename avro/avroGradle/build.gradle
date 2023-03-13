@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id "com.github.davidmc24.gradle.plugin.avro" version "1.2.1"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://packages.confluent.io/maven/'
+    }
+}
+
+dependencies {
+    implementation 'org.apache.avro:avro:1.11.0'
+    implementation 'org.apache.kafka:kafka-clients:3.4.0'
+    implementation 'io.confluent:kafka-avro-serializer:7.3.2'
+}
+
+//generateAvroJava {
+//    source zipTree("external-libs/schema.jar")
+//}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs "src/main/avro"
+        }
+    }
+}
